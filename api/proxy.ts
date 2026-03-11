@@ -1,3 +1,7 @@
+export const config = {
+  runtime: 'edge',
+};
+
 export default async function handler(req: Request) {
   const url = new URL(req.url);
 
@@ -9,10 +13,10 @@ export default async function handler(req: Request) {
     });
   }
 
-  // Remove /api/proxy from path
+  // Remove /api/proxy from path — the remaining path already starts with /api/...
   const path = url.pathname.replace("/api/proxy", "");
 
-  const targetUrl = `https://api.coinlore.net/api${path}${url.search}`;
+  const targetUrl = `https://api.coinlore.net${path}${url.search}`;
 
   try {
     const response = await fetch(targetUrl);
@@ -25,9 +29,10 @@ export default async function handler(req: Request) {
         "Content-Type": "application/json",
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Unknown error";
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: message }),
       {
         status: 500,
         headers: {
