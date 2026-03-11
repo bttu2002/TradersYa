@@ -1,9 +1,18 @@
 export default async function handler(req: Request) {
   const url = new URL(req.url);
-  const path = url.pathname.replace('/api/proxy', '/api');
-  
-  // Provide full path including query params
-  const targetUrl = `https://api.coinlore.net${path}${url.search}`;
+
+  // Handle CORS preflight
+  if (req.method === "OPTIONS") {
+    return new Response(null, {
+      status: 200,
+      headers: corsHeaders(),
+    });
+  }
+
+  // Remove /api/proxy from path
+  const path = url.pathname.replace("/api/proxy", "");
+
+  const targetUrl = `https://api.coinlore.net/api${path}${url.search}`;
 
   try {
     const response = await fetch(targetUrl);
@@ -12,19 +21,28 @@ export default async function handler(req: Request) {
     return new Response(data, {
       status: response.status,
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
+        ...corsHeaders(),
+        "Content-Type": "application/json",
       },
     });
-  } catch (err: any) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+  } catch (error: any) {
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      {
+        status: 500,
+        headers: {
+          ...corsHeaders(),
+          "Content-Type": "application/json",
+        },
+      }
+    );
   }
+}
+
+function corsHeaders() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
 }
