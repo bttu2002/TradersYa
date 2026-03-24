@@ -1,4 +1,4 @@
- 🚀 TradersYa - Real-time Cryptocurrency Tracker
+## 🚀 TradersYa - Real-time Cryptocurrency Tracker
 
 A modern, high-performance cryptocurrency market tracking application built with **React**, **TypeScript**, and **Vite**. This project focuses on seamless data integration, user experience, and professional state management.
 
