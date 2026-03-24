@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+ 🚀 TradersYa - Real-time Cryptocurrency Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance cryptocurrency market tracking application built with **React**, **TypeScript**, and **Vite**. This project focuses on seamless data integration, user experience, and professional state management.
 
-Currently, two official plugins are available:
+📍 **Live Demo:** [traders-ya.vercel.app](https://traders-ya.vercel.app)  
+📂 **GitHub Repo:** [github.com/bttu2002/TradersYa](https://github.com/bttu2002/TradersYa)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🔥 Key Features
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **Real-time Market Data:** Integrated **CoinLore API** to fetch and display up-to-date global trending coins.
+- **Advanced Search:** Instant filtering functionality with optimized performance for large datasets.
+- **Dynamic Theming:** Full **Dark/Light mode** support to enhance user visual experience.
+- **Proxy Backend Solution:** Developed an intermediate backend layer to resolve **CORS (Cross-Origin Resource Sharing)** issues, ensuring stable data flow in production.
+- **Responsive UI:** Fully optimized for Mobile, Tablet, and Desktop using **Tailwind CSS**.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠 Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| **Frontend** | ReactJS (Hooks), TypeScript, Tailwind CSS |
+| **Build Tool** | Vite (Fast development & optimized build) |
+| **API** | CoinLore REST API |
+| **Deployment** | Vercel |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 💡 Technical Highlights & Problem Solving
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 1. Solving the CORS Challenge
+During deployment, direct browser-to-API calls often trigger **CORS errors**. To overcome this, I implemented an **Intermediate Backend (Proxy)**. This approach demonstrates my understanding of browser security policies and server-side communication, ensuring the app remains functional in a live environment.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2. Type-Safe Development
+By utilizing **TypeScript**, I defined strict interfaces for API responses and component props. This reduced runtime errors, improved code readability, and made the project much easier to scale and maintain.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 3. Modern Styling Workflow
+Using **Tailwind CSS**, I implemented a utility-first approach that allowed for rapid UI prototyping while keeping the final CSS bundle size minimal and highly performant.
+
+---
+
+## 🏃‍♂️ Getting Started
+
+1. **Clone the repository:**
+   git clone [https://github.com/bttu2002/TradersYa.git](https://github.com/bttu2002/TradersYa.git)
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+-----
+
+## 📮 Contact
+
+**Bui Thanh Tu** - Frontend Developer
+  - **Phone:** 0935648545
+  - **Gmail:** bttu2002@gmail.com
+  - **LinkedIn** [@bttu2002](www.linkedin.com/in/bttu2002)
+  - **GitHub:** [@bttu2002](www.github.com/bttu2002)
+-----
+
+*Developed with ❤️ and Passion for clean code.*
